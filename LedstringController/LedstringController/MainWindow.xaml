@@ -1,0 +1,53 @@
+﻿<Window x:Class="LedstringController.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        xmlns:local="clr-namespace:LedstringController"
+        mc:Ignorable="d"
+        Title="Change color of ledstrip" Height="450" Width="800"
+                TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
+    <StackPanel>
+        <md:Card Padding="32" Margin="16">
+            <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Led strip colour picker</TextBlock>
+        </md:Card>
+        <md:Card Padding="32" Margin="16">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Com port:</TextBlock>
+                <ComboBox Grid.Row="1" ItemsSource="{Binding AvailableComs}" SelectedItem="{Binding SelectedCom}">
+                </ComboBox>
+            </Grid>
+        </md:Card>
+        <md:Card Padding="32" Margin="16" >
+            <Grid IsEnabled="{Binding HasComSelected}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                    <RowDefinition Height="1*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <TextBlock Style="{DynamicResource MaterialDesignTitleTextBlock}">Colour:</TextBlock>
+                <md:ColorPicker Grid.Row="1" Color="{Binding Colour}"></md:ColorPicker>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox md:HintAssist.Hint="Color" md:HintAssist.IsFloating="True" Text="{Binding Colour}"></TextBox>
+                    <Button  Grid.Column="2" HorizontalAlignment="Right" Click="Button_Click">Apply</Button>
+                </Grid>
+            </Grid>
+        </md:Card>
+    </StackPanel>
+</Window>

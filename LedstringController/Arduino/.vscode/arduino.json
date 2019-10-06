@@ -1,0 +1,7 @@
+{
+    "sketch": "serialcontrolstrip.ino",
+    "board": "arduino:avr:nano",
+    "configuration": "cpu=atmega328old",
+    "port": "COM4",
+    "programmer": "AVR ISP"
+}
